@@ -13,9 +13,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Oauth_demo</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>pom</packaging>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
+	<modules>
+		<module>auth_server</module>
+		<module>resource_server</module>
+		<module>client</module>
+	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
