@@ -40,6 +40,21 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager);
+        endpoints.authenticationManager(authenticationManager)
+//                .tokenStore(tokenStore())
+//                .accessTokenConverter(converter())
+        ;
     }
+
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(converter());
+//    }
+//
+//    @Bean
+//    public JwtAccessTokenConverter converter() {
+//        var conv = new JwtAccessTokenConverter();
+//        conv.setSigningKey("secret");
+//        return conv;
+//    }
 }

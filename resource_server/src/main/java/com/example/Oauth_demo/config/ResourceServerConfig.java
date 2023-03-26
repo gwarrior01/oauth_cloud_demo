@@ -6,4 +6,16 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig {
+
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(converter());
+//    }
+//
+//    @Bean
+//    public JwtAccessTokenConverter converter() {
+//        var conv = new JwtAccessTokenConverter();
+//        conv.setSigningKey("secret");
+//        return conv;
+//    }
 }
