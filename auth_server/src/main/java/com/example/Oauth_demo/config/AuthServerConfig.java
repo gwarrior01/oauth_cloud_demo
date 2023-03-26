@@ -20,7 +20,9 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("isAuthenticated()")
+//                .tokenKeyAccess("isAuthenticated()")
+        ;
 
     }
 

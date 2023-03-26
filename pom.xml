@@ -22,7 +22,8 @@
 		<module>auth_server</module>
 		<module>resource_server</module>
 		<module>client</module>
-	</modules>
+        <module>sso</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
