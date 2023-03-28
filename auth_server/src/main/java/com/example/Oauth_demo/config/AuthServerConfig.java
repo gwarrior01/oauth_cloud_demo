@@ -3,6 +3,7 @@ package com.example.Oauth_demo.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -16,6 +17,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -35,6 +38,12 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .accessTokenValiditySeconds(5000) // seconds
                 .authorizedGrantTypes("password", "refresh_token")
                 .and()
+                .withClient("client2")
+                .secret("secret2")
+                .scopes("read")
+                .accessTokenValiditySeconds(5000) // seconds
+                .authorizedGrantTypes("client_credentials")
+                .and()
                 .withClient("resourceserver")
                 .secret("12345");
 
@@ -43,6 +52,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService)
 //                .tokenStore(tokenStore())
 //                .accessTokenConverter(converter())
         ;
